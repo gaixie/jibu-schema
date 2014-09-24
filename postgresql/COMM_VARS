@@ -1,0 +1,24 @@
+#!/bin/bash
+#
+# DISCRIPTION: DB Server 上的 shell 脚本公用的变量在这个文件中统一定义。
+#
+# 所有运行在 DB Server 上的 shell 脚本不要单独定义下面这些变量，通过加载此文件，
+# 来实现统一维护，便于在不同的服务器上迁移配置。
+#
+# 下面默认的定义适用于 CentOS (RHEL) 的安装环境，如果要运行在 Solaris 下，一定要修改相关的变量值
+
+# PGSQL 相关的变量，不要将下面的变量 EXPORT 到环境变量中
+#PGHOME=/usr/local/pgsql/default
+PGHOME=/usr/pgsql-9.1
+PGDATA=/var/lib/pgsql/default/data
+PGPORT=5432
+PGCLIENTENCODING=UTF-8
+PGLOG=/var/lib/pgsql/default/log
+
+DBHOST="127.0.0.1"
+DBNAME="jibu_db"
+DBUSER="jibu_db_user"
+
+CURDATE=$(date '+%Y%m%d')
+CURTIME=$(date '+%Y%m%d-%H%M%S')
+

@@ -1,0 +1,34 @@
+#!/bin/bash
+#
+# DISCRIPTION: dump jibudb 数据库。
+#              此脚本可以通过 crontab 在 slave 数据库上被执行，以减轻 master 的负载。
+#
+# 执行此脚本前，先确认下面内容是否正确设置：
+# 1> scripts/log 目录已创建，用于保存输出的日志。
+# 2> scripts/COMM_VARS 文件中变量的值已经正确设置
+# 3> 数据库服务器的 $HOME/dump-archive 目录已经创建
+#  
+#
+# History:
+#   2013/05/28    Tommy Wang
+
+# 得到执行脚本文件的当前目录，如果文件是个软链接，需要通过 readlink 来处理
+# 注意：下面的代码段不能在 Mac OS 下正常工作
+PRG="$0"
+
+while [ -h $PRG ]; do
+    PRG=$(readlink $PRG) 
+done
+
+PRGDIR=$(cd -P "$(dirname $PRG)" && pwd)
+PRGFILE=$(basename $PRG)
+
+
+# 加载全局共用变量文件 scripts/COMM_VARS
+. $PRGDIR/COMM_VARS
+ 
+# 每个基础备份的目录用日期区分
+BACKDIR=/var/lib/pgsql/dump-archive
+
+# 开始备份
+$PGHOME/bin/pg_dump -h $DBHOST -p $PGPORT -U $DBUSER $DBNAME -v | gzip -c > $BACKDIR/$DBNAME_$CURTIME.dump.gz

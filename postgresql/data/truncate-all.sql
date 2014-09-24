@@ -1,0 +1,2 @@
+truncate
+schema_changes;
