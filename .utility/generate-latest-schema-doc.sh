@@ -8,7 +8,8 @@ if [ "$TRAVIS_REPO_SLUG" == "gaixie/jibu-schema" ] && \
 
     echo -e "Publishing schema doc...\n"
 
-    java -jar $SPYPATH -t pgsql -host localhost -db jibu_db -s public -u jibu_db_user -p 000000 -dp $JDBCPATH -charset UTF-8 -o $HOME/schema-latest 
+    java -jar $SPYPATH -t pgsql -host localhost -db jibu_db -s public \
+        -u jibu_db_user -p 000000 -dp $JDBCPATH -noads -nologo -charset UTF-8 -o $HOME/schema-latest
 
     cd $HOME
     git config --global user.email "travis@travis-ci.org"
