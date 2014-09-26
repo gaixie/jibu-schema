@@ -5,8 +5,7 @@ addons:
 
 env:
   global:
-#     secure: "U7FffFCMQlP0FeulQn9vLqK4xKLC/avNHGYSdkpSrXh9Pt6RJETjNt3hrtZ9/VoU/D4Ei97w1mehBt+1aVNPyNRcGolMN31lOJeQoHs/o4fFod0Q4wFcH5c6CNikTzRT650wL1Yg58g1wrvPoYe4a/l3M/89gS/NmGgxnZvYO2w="
-    - secure: "iObS4iIBF6cyWL8tZxQh4GVTTZ4x21ckgpQruFS2KGOfLfKKpDxJc/gcrCCJWZeQ7NUf7UWAIYqKQbMG+M+v1EDyTHbUMMzetnVY7tZLUgD/TFre6w7jTiD0zIQn1LpW4WgrPNmozxhEhwHbh26zdU3DuRx0vzmhQmtN3ql7/iI="
+    - secure: "WDIYklSfvxx/Wzw+ToI51ZMHMNPtBgsqv23W4pw0S09tLvGqNdOvH1/bp9jFRNdY7dw4QY2zYJmG2FxNFOU+zJTv4+Jt2eqUBZApk/vxvP0jsn5aKs78ws2g8KxhAcMVVHhTdM5aaUQlo3h99TJoRHpumVer2j0YT5ohFAwm1hQ="
 
 before_install:
   - sudo apt-get install graphviz
