@@ -1,0 +1,35 @@
+language: bash
+
+addons:
+  postgresql: "9.3"
+
+env:
+  global:
+    - secure: "U7FffFCMQlP0FeulQn9vLqK4xKLC/avNHGYSdkpSrXh9Pt6RJETjNt3hrtZ9/VoU/D4Ei97w1mehBt+1aVNPyNRcGolMN31lOJeQoHs/o4fFod0Q4wFcH5c6CNikTzRT650wL1Yg58g1wrvPoYe4a/l3M/89gS/NmGgxnZvYO2w="
+    - secure: "iObS4iIBF6cyWL8tZxQh4GVTTZ4x21ckgpQruFS2KGOfLfKKpDxJc/gcrCCJWZeQ7NUf7UWAIYqKQbMG+M+v1EDyTHbUMMzetnVY7tZLUgD/TFre6w7jTiD0zIQn1LpW4WgrPNmozxhEhwHbh26zdU3DuRx0vzmhQmtN3ql7/iI="
+
+before_install:
+  - wget -P $HOME -c http://repo1.maven.org/maven2/org/jumpmind/symmetric/schemaspy/schemaspy/5.0.0/schemaspy-5.0.0.jar
+  - export SPYPATH=$HOME/schemaspy-5.0.0.jar
+  
+  - wget -P $HOME -c http://repo1.maven.org/maven2/org/postgresql/postgresql/9.3-1102-jdbc41/postgresql-9.3-1102-jdbc41.jar
+  - export JDBCPATH=$HOME/postgresql-9.3-1102-jdbc41.jar
+  
+before_script:
+  - psql -c "CREATE USER jibu_db_user WITH PASSWORD '000000';" -U postgres
+  - psql -c "CREATE DATABASE jibu_db OWNER jibu_db_user ENCODING 'UTF8';" -U postgres
+
+script:
+  - cat ./postgresql/tables/tables*.sql > $HOME/schema.sql
+  - cat ./postgresql/tables/comments*.sql >> $HOME/schema.sql
+  - cat ./postgresql/data/data*.sql >> $HOME/schema.sql
+  - psql -U jibu_db_user -d jibu_db -1 -f $HOME/schema.sql
+  - psql -U jibu_db_user -d jibu_db -1 -f ./postgresql/data/truncate-all.sql
+
+after_success:
+  - .utility/generate-latest-schema-doc.sh
+
+branches:
+  only:
+    - master
+    - develop
