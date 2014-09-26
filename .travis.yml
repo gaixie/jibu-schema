@@ -5,10 +5,11 @@ addons:
 
 env:
   global:
-    - secure: "U7FffFCMQlP0FeulQn9vLqK4xKLC/avNHGYSdkpSrXh9Pt6RJETjNt3hrtZ9/VoU/D4Ei97w1mehBt+1aVNPyNRcGolMN31lOJeQoHs/o4fFod0Q4wFcH5c6CNikTzRT650wL1Yg58g1wrvPoYe4a/l3M/89gS/NmGgxnZvYO2w="
+#     secure: "U7FffFCMQlP0FeulQn9vLqK4xKLC/avNHGYSdkpSrXh9Pt6RJETjNt3hrtZ9/VoU/D4Ei97w1mehBt+1aVNPyNRcGolMN31lOJeQoHs/o4fFod0Q4wFcH5c6CNikTzRT650wL1Yg58g1wrvPoYe4a/l3M/89gS/NmGgxnZvYO2w="
     - secure: "iObS4iIBF6cyWL8tZxQh4GVTTZ4x21ckgpQruFS2KGOfLfKKpDxJc/gcrCCJWZeQ7NUf7UWAIYqKQbMG+M+v1EDyTHbUMMzetnVY7tZLUgD/TFre6w7jTiD0zIQn1LpW4WgrPNmozxhEhwHbh26zdU3DuRx0vzmhQmtN3ql7/iI="
 
 before_install:
+  - sudo apt-get install graphviz
   - wget -P $HOME -c http://repo1.maven.org/maven2/org/jumpmind/symmetric/schemaspy/schemaspy/5.0.0/schemaspy-5.0.0.jar
   - export SPYPATH=$HOME/schemaspy-5.0.0.jar
   

@@ -31,5 +31,5 @@ if [ "$TRAVIS_REPO_SLUG" == "gaixie/jibu-schema" ] && \
     git commit -m "Lastest schema doc on successful travis build $TRAVIS_BUILD_NUMBER auto-pushed to gh-pages"
     git push -fq origin gh-pages > /dev/null
 
-    echo -e "Published Javadoc & Report to gh-pages.\n"
+    echo -e "Published Schema Doc to gh-pages.\n"
 fi
