@@ -14,7 +14,7 @@ if [ "$TRAVIS_REPO_SLUG" == "gaixie/jibu-schema" ] && \
     cd $HOME
     git config --global user.email "travis@travis-ci.org"
     git config --global user.name "travis-ci"
-    git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/gaixie/sandbox gh-pages > /dev/null
+    git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/gaixie/jibu gh-pages > /dev/null
 
     cd gh-pages
 
