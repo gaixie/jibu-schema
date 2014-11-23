@@ -7,9 +7,9 @@
 #
 # 下面默认的定义适用于 CentOS (RHEL) 的安装环境，如果要运行在 Solaris 下，一定要修改相关的变量值
 
-# PGSQL 相关的变量，不要将下面的变量 EXPORT 到环境变量中
-#PGHOME=/usr/local/pgsql/default
-PGHOME=/usr/pgsql-9.1
+# PGSQL 相关的变量，不要将下面的变量 EXPORT 到环境变量中，只在本 shell 有效
+# 以防和其它不同配置的机器产生冲突
+PGHOME=/usr/local/pgsql/default
 PGDATA=/var/lib/pgsql/default/data
 PGPORT=5432
 PGCLIENTENCODING=UTF-8
