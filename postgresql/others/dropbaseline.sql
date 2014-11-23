@@ -3,4 +3,6 @@
 -- 需先 drop tables
 -- ------------------------------------------------------
 DROP TABLE 
-schema_changes;
+schema_changes,
+tokens,
+userbase;
